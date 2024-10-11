@@ -28,3 +28,15 @@ vim.keymap.set("n", "<F7>", require("dap").step_into, { desc = "Continue" })
 vim.keymap.set("n", "<F8>", require("dap").step_over, { desc = "Continue" })
 vim.keymap.set("n", "<F9>", require("dap").step_out, { desc = "Continue" })
 vim.keymap.set("n", "<F10>", require("dap").run_to_cursor, { desc = "Continue" })
+
+-- neotree
+vim.keymap.set("n", "<leader>e", function()
+  if vim.bo.filetype == "neo-tree" then
+    vim.cmd.wincmd("p")
+  else
+    require("neo-tree.command").execute({ focus = true })
+  end
+end, { desc = "Focus Explorer" })
+vim.keymap.set("n", "<leader>E", function()
+  require("neo-tree.command").execute({ toggle = true })
+end, { desc = "Toggle Explorer" })
