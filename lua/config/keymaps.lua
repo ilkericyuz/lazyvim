@@ -18,9 +18,9 @@ vim.keymap.set("v", "<C-S-k>", "5k", { desc = "Select up fast" })
 vim.keymap.set("v", "<C-S-h>", "8h", { desc = "Select left fast" })
 vim.keymap.set("v", "<C-S-l>", "8l", { desc = "Select right fast" })
 
--- "jk" to escape
-vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "jk to escape" })
-vim.keymap.set("v", "jk", "<ESC>", { noremap = true, silent = true, desc = "jk to escape" })
+-- "lh" to escape
+vim.keymap.set("i", "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
+vim.keymap.set("v", "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
 
 -- F keys for debugging
 vim.keymap.set("n", "<F5>", require("dap").continue, { desc = "Continue" })
