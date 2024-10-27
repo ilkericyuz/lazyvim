@@ -244,6 +244,39 @@ return {
   },
 
   {
+    "aktersnurra/no-clown-fiesta.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = false, -- Enable this to disable the bg color
+      styles = {
+        -- You can set any of the style values specified for `:h nvim_set_hl`
+        comments = {},
+        functions = {},
+        keywords = {},
+        lsp = { underline = true },
+        match_paren = {},
+        type = { bold = true },
+        variables = {},
+      },
+    },
+  },
+
+  {
+    "shaunsingh/nord.nvim",
+  },
+
+  {
+    "marko-cerovac/material.nvim",
+  },
+
+  { "EdenEast/nightfox.nvim" },
+
+  { "kdheepak/monochrome.nvim" },
+
+  { "datsfilipe/vesper.nvim" },
+
+  {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "github_dark",
