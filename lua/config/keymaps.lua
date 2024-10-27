@@ -40,3 +40,7 @@ end, { desc = "Focus Explorer" })
 vim.keymap.set("n", "<leader>E", function()
   require("neo-tree.command").execute({ toggle = true })
 end, { desc = "Toggle Explorer" })
+
+-- buffer
+-- switch to previous buffer
+vim.keymap.set("n", "<leader><leader>", "<C-^>", { noremap = true, silent = true, desc = "Switch to previous buffer" })
