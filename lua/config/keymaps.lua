@@ -17,6 +17,10 @@ vim.keymap.set("v", "<C-S-j>", "5j", { desc = "Select up fast" })
 vim.keymap.set("v", "<C-S-k>", "5k", { desc = "Select up fast" })
 vim.keymap.set("v", "<C-S-h>", "8h", { desc = "Select left fast" })
 vim.keymap.set("v", "<C-S-l>", "8l", { desc = "Select right fast" })
+vim.keymap.set("n", "<C-S-e>", "5<C-e>", { desc = "Scroll up fast" })
+vim.keymap.set("v", "<C-S-e>", "5<C-e>", { desc = "Select scroll up fast" })
+vim.keymap.set("n", "<C-S-y>", "5<C-y>", { desc = "Scroll down fast" })
+vim.keymap.set("v", "<C-S-y>", "5<C-y>", { desc = "Select scroll down fast" })
 
 -- "lh" to escape
 vim.keymap.set("i", "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
