@@ -1,6 +1,10 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
+-- delete F1 help
+vim.keymap.set("n", "<F1>", "<Nop>", { noremap = true, silent = true, desc = "F1 is nop" })
+
 vim.keymap.set(
   "n",
   "<leader>sx",
@@ -9,22 +13,15 @@ vim.keymap.set(
 )
 
 -- Move fast
-vim.keymap.set("n", "<C-S-j>", "5j", { desc = "Move up fast" })
-vim.keymap.set("n", "<C-S-k>", "5k", { desc = "Move up fast" })
-vim.keymap.set("n", "<C-S-h>", "8h", { desc = "Move left fast" })
-vim.keymap.set("n", "<C-S-l>", "8l", { desc = "Move right fast" })
-vim.keymap.set("v", "<C-S-j>", "5j", { desc = "Select up fast" })
-vim.keymap.set("v", "<C-S-k>", "5k", { desc = "Select up fast" })
-vim.keymap.set("v", "<C-S-h>", "8h", { desc = "Select left fast" })
-vim.keymap.set("v", "<C-S-l>", "8l", { desc = "Select right fast" })
-vim.keymap.set("n", "<C-S-e>", "5<C-e>", { desc = "Scroll up fast" })
-vim.keymap.set("v", "<C-S-e>", "5<C-e>", { desc = "Select scroll up fast" })
-vim.keymap.set("n", "<C-S-y>", "5<C-y>", { desc = "Scroll down fast" })
-vim.keymap.set("v", "<C-S-y>", "5<C-y>", { desc = "Select scroll down fast" })
+vim.keymap.set({ "n", "v" }, "<C-S-j>", "5j", { desc = "Move down fast" })
+vim.keymap.set({ "n", "v" }, "<C-S-k>", "5k", { desc = "Move up fast" })
+vim.keymap.set({ "n", "v" }, "<C-S-h>", "8h", { desc = "Move left fast" })
+vim.keymap.set({ "n", "v" }, "<C-S-l>", "8l", { desc = "Move right fast" })
+vim.keymap.set({ "n", "v" }, "<C-S-e>", "5<C-e>", { desc = "Scroll up fast" })
+vim.keymap.set({ "n", "v" }, "<C-S-y>", "5<C-y>", { desc = "Scroll down fast" })
 
 -- "lh" to escape
-vim.keymap.set("i", "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
-vim.keymap.set("v", "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
+vim.keymap.set({ "n", "i", "v" }, "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
 
 -- F keys for debugging
 vim.keymap.set("n", "<F5>", require("dap").continue, { desc = "Continue" })
