@@ -2,8 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- delete F1 help
-vim.keymap.set("n", "<F1>", "<Nop>", { noremap = true, silent = true, desc = "F1 is nop" })
+-- disable F1 help
+vim.keymap.set({ "n", "i" }, "<F1>", "<Nop>", { noremap = true, silent = true, desc = "F1 is nop" })
 
 vim.keymap.set(
   "n",
@@ -22,6 +22,7 @@ vim.keymap.set({ "n", "v" }, "<C-S-y>", "5<C-y>", { desc = "Scroll down fast" })
 
 -- "lh" to escape
 vim.keymap.set({ "n", "i", "v" }, "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
+vim.keymap.set({ "n", "i", "v" }, "LH", "<ESC>", { noremap = true, silent = true, desc = "LH to escape" })
 
 -- F keys for debugging
 vim.keymap.set("n", "<F5>", require("dap").continue, { desc = "Continue" })
@@ -45,6 +46,12 @@ vim.keymap.set("n", "<leader>E", function()
   require("neo-tree.command").execute({ toggle = true })
 end, { desc = "Toggle Explorer" })
 
--- buffer
 -- switch to previous buffer
 vim.keymap.set("n", "<leader><leader>", "<C-^>", { noremap = true, silent = true, desc = "Switch to previous buffer" })
+
+-- move cursor to top, middle, and bottom of the screen
+vim.keymap.set("n", "<C-p>", "H", { desc = "Move cursor to the top of the screen" })
+-- Move cursor to the middle of the screen
+vim.keymap.set("n", "<C-k>", "M", { desc = "Move cursor to the middle of the screen" })
+-- Move cursor to the bottom of the screen
+vim.keymap.set("n", "<C-n>", "L", { desc = "Move cursor to the bottom of the screen" })
