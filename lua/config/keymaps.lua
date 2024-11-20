@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 
 -- disable F1 help
-vim.keymap.set({ "n", "i" }, "<F1>", "<Nop>", { noremap = true, silent = true, desc = "F1 is nop" })
+vim.keymap.set({ "n", "i", "v" }, "<F1>", "<Nop>", { noremap = true, silent = true, desc = "F1 is nop" })
 
 vim.keymap.set(
   "n",
