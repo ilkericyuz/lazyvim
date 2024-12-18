@@ -8,7 +8,7 @@ vim.keymap.set({ "n", "i", "v" }, "<F1>", "<Nop>", { noremap = true, silent = tr
 vim.keymap.set(
   "n",
   "<leader>sx",
-  require("telescope.builtin").resume,
+  require("fzf-lua").resume,
   { noremap = true, silent = true, desc = "Resume last telescope session" }
 )
 
@@ -52,6 +52,6 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>", { noremap = true, silent = true
 -- move cursor to top, middle, and bottom of the screen
 vim.keymap.set("n", "<C-p>", "H", { desc = "Move cursor to the top of the screen" })
 -- Move cursor to the middle of the screen
-vim.keymap.set("n", "<C-k>", "M", { desc = "Move cursor to the middle of the screen" })
+vim.keymap.set("n", "<C-m>", "M", { desc = "Move cursor to the middle of the screen" })
 -- Move cursor to the bottom of the screen
 vim.keymap.set("n", "<C-n>", "L", { desc = "Move cursor to the bottom of the screen" })
