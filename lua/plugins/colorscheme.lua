@@ -3,6 +3,7 @@ return {
     "folke/tokyonight.nvim",
     {
       "tiagovla/tokyodark.nvim",
+      lazy = true,
       opts = {
         -- custom options here
       },
@@ -18,13 +19,13 @@ return {
 
   {
     "BeardedBear/bearded-theme",
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
 
   {
     "killitar/obscure.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {},
     config = function()
@@ -43,7 +44,7 @@ return {
 
   {
     "cdmill/neomodern.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("neomodern").setup({
@@ -107,7 +108,7 @@ return {
   {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = true, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require("github-theme").setup({
@@ -120,12 +121,13 @@ return {
 
   {
     "wojciechkepka/vim-github-dark",
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
 
   {
     "rockyzhang24/arctic.nvim",
+    lazy = true,
     branch = "v2",
     dependencies = { "rktjmp/lush.nvim" },
     priority = 1000,
@@ -133,13 +135,13 @@ return {
 
   {
     "sharpchen/Eva-Theme.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
 
   {
     "AlexvZyl/nordic.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("nordic").setup({
@@ -192,7 +194,7 @@ return {
 
   {
     "catppuccin/nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     name = "catppuccin",
     -- you can do it like this with a config function
@@ -245,7 +247,7 @@ return {
 
   {
     "aktersnurra/no-clown-fiesta.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {
       transparent = false, -- Enable this to disable the bg color
@@ -264,20 +266,32 @@ return {
 
   {
     "shaunsingh/nord.nvim",
+    lazy = true,
   },
 
   {
     "marko-cerovac/material.nvim",
+    lazy = true,
   },
 
-  { "EdenEast/nightfox.nvim" },
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = true,
+  },
 
-  { "kdheepak/monochrome.nvim" },
+  {
+    "kdheepak/monochrome.nvim",
+    lazy = true,
+  },
 
-  { "datsfilipe/vesper.nvim" },
+  {
+    "datsfilipe/vesper.nvim",
+    lazy = true,
+  },
 
   {
     "LazyVim/LazyVim",
+    lazy = true,
     opts = {
       colorscheme = "github_dark",
     },

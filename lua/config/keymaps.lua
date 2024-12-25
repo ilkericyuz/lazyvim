@@ -31,9 +31,6 @@ vim.keymap.set("n", "<F8>", require("dap").step_over, { desc = "Continue" })
 vim.keymap.set("n", "<F9>", require("dap").step_out, { desc = "Continue" })
 vim.keymap.set("n", "<F10>", require("dap").run_to_cursor, { desc = "Continue" })
 
--- <C-u> to go back
-vim.keymap.set("n", "<C-u>", "<C-o>", { desc = "Go back" })
-
 -- neotree
 vim.keymap.set("n", "<leader>e", function()
   if vim.bo.filetype == "neo-tree" then
