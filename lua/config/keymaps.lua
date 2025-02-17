@@ -24,23 +24,25 @@ vim.keymap.set({ "n", "v" }, "<C-S-y>", "5<C-y>", { desc = "Scroll down fast" })
 vim.keymap.set({ "n", "i", "v" }, "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
 vim.keymap.set({ "n", "i", "v" }, "LH", "<ESC>", { noremap = true, silent = true, desc = "LH to escape" })
 
+local dap = require("dap")
 -- F keys for debugging
-vim.keymap.set("n", "<F5>", require("dap").continue, { desc = "Continue" })
-vim.keymap.set("n", "<F7>", require("dap").step_into, { desc = "Continue" })
-vim.keymap.set("n", "<F8>", require("dap").step_over, { desc = "Continue" })
-vim.keymap.set("n", "<F9>", require("dap").step_out, { desc = "Continue" })
-vim.keymap.set("n", "<F10>", require("dap").run_to_cursor, { desc = "Continue" })
+vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
+vim.keymap.set("n", "<F7>", dap.step_into, { desc = "Continue" })
+vim.keymap.set("n", "<F8>", dap.step_over, { desc = "Continue" })
+vim.keymap.set("n", "<F9>", dap.step_out, { desc = "Continue" })
+vim.keymap.set("n", "<F10>", dap.run_to_cursor, { desc = "Continue" })
 
+local neo_tree = require("neo-tree")
 -- neotree
 vim.keymap.set("n", "<leader>e", function()
   if vim.bo.filetype == "neo-tree" then
     vim.cmd.wincmd("p")
   else
-    require("neo-tree.command").execute({ focus = true })
+    neo_tree.execute({ focus = true })
   end
 end, { desc = "Focus Explorer" })
 vim.keymap.set("n", "<leader>E", function()
-  require("neo-tree.command").execute({ toggle = true })
+  neo_tree.execute({ toggle = true })
 end, { desc = "Toggle Explorer" })
 
 -- switch to previous buffer
@@ -52,3 +54,21 @@ vim.keymap.set("n", "<C-p>", "H", { desc = "Move cursor to the top of the screen
 vim.keymap.set("n", "<C-m>", "M", { desc = "Move cursor to the middle of the screen" })
 -- Move cursor to the bottom of the screen
 vim.keymap.set("n", "<C-n>", "L", { desc = "Move cursor to the bottom of the screen" })
+
+local lazy_vim = require("lazyvim.util")
+-- Swap Find Files Keybindings
+vim.keymap.set("n", "<leader>ff", lazy_vim.pick("files", { root = false }), { desc = "Find Files (cwd)" })
+vim.keymap.set("n", "<leader>fF", lazy_vim.pick("files"), { desc = "Find Files (Root Dir)" })
+
+-- Swap Grep Keybindings
+vim.keymap.set("n", "<leader>sg", lazy_vim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
+vim.keymap.set("n", "<leader>sG", lazy_vim.pick("live_grep"), { desc = "Grep (Root Dir)" })
+
+-- Swap Grep Word Keybindings
+vim.keymap.set(
+  { "n", "x" },
+  "<leader>sw",
+  lazy_vim.pick("grep_word", { root = false }),
+  { desc = "Visual selection or word (cwd)" }
+)
+vim.keymap.set({ "n", "x" }, "<leader>sW", lazy_vim.pick("grep_word"), { desc = "Visual selection or word (Root Dir)" })
