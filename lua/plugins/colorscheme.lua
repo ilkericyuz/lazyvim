@@ -296,4 +296,15 @@ return {
       colorscheme = "github_dark",
     },
   },
+
+  {
+    "nickkadutskyi/jb.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {},
+    config = function()
+      -- require("jb").setup({transparent = true})
+      vim.cmd("colorscheme jb")
+    end,
+  },
 }
