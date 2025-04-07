@@ -24,6 +24,9 @@ vim.keymap.set({ "n", "v" }, "<C-S-y>", "5<C-y>", { desc = "Scroll down fast" })
 vim.keymap.set({ "n", "i", "v" }, "lh", "<ESC>", { noremap = true, silent = true, desc = "lh to escape" })
 vim.keymap.set({ "n", "i", "v" }, "LH", "<ESC>", { noremap = true, silent = true, desc = "LH to escape" })
 
+-- "o" to new line without insert mode
+vim.keymap.set("n", "o", "o<Esc>", { noremap = true, silent = true, desc = "o to new line without insert mode" })
+
 local dap = require("dap")
 -- F keys for debugging
 vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
@@ -32,17 +35,17 @@ vim.keymap.set("n", "<F8>", dap.step_over, { desc = "Continue" })
 vim.keymap.set("n", "<F9>", dap.step_out, { desc = "Continue" })
 vim.keymap.set("n", "<F10>", dap.run_to_cursor, { desc = "Continue" })
 
-local neo_tree = require("neo-tree")
 -- neotree
 vim.keymap.set("n", "<leader>e", function()
   if vim.bo.filetype == "neo-tree" then
     vim.cmd.wincmd("p")
   else
-    neo_tree.execute({ focus = true })
+    vim.cmd("Neotree focus")
   end
 end, { desc = "Focus Explorer" })
+
 vim.keymap.set("n", "<leader>E", function()
-  neo_tree.execute({ toggle = true })
+  vim.cmd("Neotree toggle")
 end, { desc = "Toggle Explorer" })
 
 -- switch to previous buffer
@@ -56,6 +59,7 @@ vim.keymap.set("n", "<C-m>", "M", { desc = "Move cursor to the middle of the scr
 vim.keymap.set("n", "<C-n>", "L", { desc = "Move cursor to the bottom of the screen" })
 
 local lazy_vim = require("lazyvim.util")
+
 -- Swap Find Files Keybindings
 vim.keymap.set("n", "<leader>ff", lazy_vim.pick("files", { root = false }), { desc = "Find Files (cwd)" })
 vim.keymap.set("n", "<leader>fF", lazy_vim.pick("files"), { desc = "Find Files (Root Dir)" })
@@ -64,11 +68,29 @@ vim.keymap.set("n", "<leader>fF", lazy_vim.pick("files"), { desc = "Find Files (
 vim.keymap.set("n", "<leader>sg", lazy_vim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 vim.keymap.set("n", "<leader>sG", lazy_vim.pick("live_grep"), { desc = "Grep (Root Dir)" })
 
--- Swap Grep Word Keybindings
-vim.keymap.set(
-  { "n", "x" },
-  "<leader>sw",
-  lazy_vim.pick("grep_word", { root = false }),
-  { desc = "Visual selection or word (cwd)" }
-)
-vim.keymap.set({ "n", "x" }, "<leader>sW", lazy_vim.pick("grep_word"), { desc = "Visual selection or word (Root Dir)" })
+-- 🔄 Swap Grep Word Keybindings (fzf-lua instead of LazyVim)
+vim.keymap.set("n", "<leader>sw", function()
+  require("fzf-lua").grep_cword({ cwd = vim.fn.getcwd() })
+end, { desc = "Search word under cursor (cwd)" })
+
+vim.keymap.set("n", "<leader>sW", function()
+  require("fzf-lua").grep_cword({ cwd = require("lazyvim.util").root.get() })
+end, { desc = "Search word under cursor (Root Dir)" })
+
+-- neovide scale factor
+-- Ensure Neovide is running before applying the scaling factor
+if vim.g.neovide then
+  -- Function to update scale factor
+  local function update_scale_factor(delta)
+    vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor or 1.0) + delta
+    print("Neovide Scale Factor: " .. vim.g.neovide_scale_factor)
+  end
+
+  -- Keybindings
+  vim.keymap.set("n", "<C-=>", function()
+    update_scale_factor(0.01)
+  end, { desc = "Increase Neovide Scale" })
+  vim.keymap.set("n", "<C-->", function()
+    update_scale_factor(-0.01)
+  end, { desc = "Decrease Neovide Scale" })
+end
