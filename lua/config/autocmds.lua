@@ -7,10 +7,12 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- Disable autoformat for C, C++, and header files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "h" },
-  callback = function()
-    vim.b.autoformat = false
+-- Unify LSP offset encoding to avoid Neovim 0.11 change-tracking errors
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.offset_encoding ~= "utf-16" then
+      client.offset_encoding = "utf-16"
+    end
   end,
 })

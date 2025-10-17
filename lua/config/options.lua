@@ -4,3 +4,6 @@
 
 vim.opt.winbar = "%=%m %f"
 vim.opt.relativenumber = false
+
+-- Disable pytest-cov during debug sessions so breakpoints work
+vim.env.PYTEST_ADDOPTS = "--no-cov"
