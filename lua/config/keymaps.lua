@@ -25,18 +25,18 @@ vim.keymap.set({ "n", "i", "v" }, "LH", "<ESC>", { noremap = true, silent = true
 -- vim.keymap.set("n", "<F9>", dap.step_out, { desc = "Continue" })
 -- vim.keymap.set("n", "<F10>", dap.run_to_cursor, { desc = "Continue" })
 
--- -- neotree
--- vim.keymap.set("n", "<leader>e", function()
---   if vim.bo.filetype == "neo-tree" then
---     vim.cmd.wincmd("p")
---   else
---     vim.cmd("Neotree focus")
---   end
--- end, { desc = "Focus Explorer" })
---
--- vim.keymap.set("n", "<leader>E", function()
---   vim.cmd("Neotree toggle")
--- end, { desc = "Toggle Explorer" })
+-- neotree
+vim.keymap.set("n", "<leader>e", function()
+  if vim.bo.filetype == "neo-tree" then
+    vim.cmd.wincmd("p")
+  else
+    vim.cmd("Neotree focus")
+  end
+end, { desc = "Focus Explorer" })
+
+vim.keymap.set("n", "<leader>E", function()
+  vim.cmd("Neotree toggle")
+end, { desc = "Toggle Explorer" })
 
 -- switch to previous buffer
 vim.keymap.set("n", "<leader><leader>", "<C-^>", { noremap = true, silent = true, desc = "Switch to previous buffer" })
