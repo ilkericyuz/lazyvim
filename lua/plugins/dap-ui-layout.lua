@@ -1,4 +1,4 @@
--- Put DAP UI sidebar on the RIGHT so it doesn't fight Snacks Explorer on the left
+-- Put DAP UI sidebar on the RIGHT so it doesn't fight Neo-tree on the left
 return {
   {
     "rcarriga/nvim-dap-ui",
