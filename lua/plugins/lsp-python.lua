@@ -1,13 +1,9 @@
+-- Fix and format with ruff on save, like the pre-commit hooks, so pre-commit has nothing left to do
 return {
-  "neovim/nvim-lspconfig",
+  "stevearc/conform.nvim",
   opts = {
-    servers = {
-      ruff = {
-        enabled = false,
-      },
-      ruff_lsp = {
-        enabled = false,
-      },
+    formatters_by_ft = {
+      python = { "ruff_fix", "ruff_format" },
     },
   },
 }

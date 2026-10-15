@@ -37,26 +37,8 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>", { silent = true, desc = "Switch
 vim.keymap.set("n", "<C-p>", "H", { desc = "Move cursor to the top of the screen" })
 -- Move cursor to the middle of the screen
 -- Only where <C-m> is distinguishable from <CR>; elsewhere this would remap Enter
-if vim.g.neovide or vim.env.TERM_PROGRAM == "ghostty" or vim.env.TERM == "xterm-kitty" then
+if vim.env.TERM_PROGRAM == "ghostty" or vim.env.TERM == "xterm-kitty" then
   vim.keymap.set("n", "<C-m>", "M", { desc = "Move cursor to the middle of the screen" })
 end
 -- Move cursor to the bottom of the screen
 vim.keymap.set("n", "<C-n>", "L", { desc = "Move cursor to the bottom of the screen" })
-
--- neovide scale factor
--- Ensure Neovide is running before applying the scaling factor
-if vim.g.neovide then
-  -- Function to update scale factor
-  local function update_scale_factor(delta)
-    vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor or 1.0) + delta
-    vim.notify("Neovide Scale Factor: " .. vim.g.neovide_scale_factor)
-  end
-
-  -- Keybindings
-  vim.keymap.set("n", "<C-=>", function()
-    update_scale_factor(0.1)
-  end, { desc = "Increase Neovide Scale" })
-  vim.keymap.set("n", "<C-->", function()
-    update_scale_factor(-0.1)
-  end, { desc = "Decrease Neovide Scale" })
-end

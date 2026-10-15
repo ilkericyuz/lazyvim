@@ -5,7 +5,4 @@
 vim.o.relativenumber = false
 vim.o.swapfile = false
 
--- Disable pytest-cov during debug sessions so breakpoints work
-vim.env.PYTEST_ADDOPTS = "--no-cov"
-
 vim.g.lazyvim_python_lsp = "pyright"

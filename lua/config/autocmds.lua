@@ -14,7 +14,7 @@ local function update_winbar(win)
   vim.wo[win].winbar = is_file and "%=%m %f" or ""
 end
 
-vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
+vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType", "TermOpen" }, {
   group = vim.api.nvim_create_augroup("user_winbar", { clear = true }),
   callback = function()
     update_winbar(vim.api.nvim_get_current_win())
