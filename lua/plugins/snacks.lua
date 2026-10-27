@@ -4,14 +4,7 @@ return {
   "folke/snacks.nvim",
   opts = {
     lazygit = {
-      config = {
-        gui = {
-          theme = {
-            -- Keep inactive tabs muted but readable; github_dark's FloatBorder is nearly black.
-            inactiveBorderColor = { "#9da7b3" },
-          },
-        },
-      },
+      configure = false, -- use lazygit's own config/colors, not one derived from the nvim colorscheme
     },
     picker = {
       sources = {
